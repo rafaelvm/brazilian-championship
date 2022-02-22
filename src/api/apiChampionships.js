@@ -77,44 +77,4 @@ export async function apiGetChampionshipDataFrom(year) {
   return ranking;
 }
 
-// Utilizei a função abaixo para verificar se eu havia de fato
-// obtido as imagens dos escudos de todos os times entre 2003
-// e 2015
 
-// export async function apiGetUniqueTeams() {
-//   if (CACHE['unique_teams']) {
-//     return CACHE['unique_teams'];
-//   }
-
-//   let uniqueTeams = [];
-
-//   for (let year = 2003; year <= 2015; year++) {
-//     const data = await apiGetChampionshipDataFrom(year);
-
-//     let championshipTeams = data.rounds
-//       .map(round => {
-//         return round.partidas
-//           .map(({ mandante, visitante }) => {
-//             return [mandante, visitante];
-//           })
-//           .flat();
-//       })
-//       .flat();
-
-//     uniqueTeams.push(...championshipTeams);
-//   }
-
-//   uniqueTeams = Array.from(new Set(uniqueTeams))
-//     .sort((a, b) => a.localeCompare(b))
-//     .map(team => {
-//       return {
-//         original: team,
-//         name: formatTeam(team),
-//         image: helperGetImageName(team),
-//       };
-//     });
-
-//   CACHE['unique_teams'] = uniqueTeams;
-
-//   return uniqueTeams;
-// }
