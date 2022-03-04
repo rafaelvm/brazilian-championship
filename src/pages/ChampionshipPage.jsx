@@ -14,23 +14,11 @@ export default function ChampionshipPage() {
   const year = parseInt(pathname.substring(1), 10);
 
   useEffect(() => {
-    /**
-     * Assumo que esta página
-     * está visível no DOM
-     */
     let pageInDOM = true;
 
     async function getChampionshipData() {
       const dataFromYear = await apiGetChampionshipDataFrom(year);
 
-      /**
-       * Só troco o estado se a
-       * página se mantiver no
-       * DOM, pois ela pode ter
-       * sido "trocada" enquanto
-       * a requisição ainda estava
-       * sendo feita
-       */
       if (pageInDOM) {
         setRanking(dataFromYear);
 
@@ -42,11 +30,6 @@ export default function ChampionshipPage() {
 
     getChampionshipData();
 
-    /**
-     * Cleanup function do useEffect,
-     * onde indicamos que a página
-     * não está mais no DOM
-     */
     return () => (pageInDOM = false);
   }, [year]);
 
